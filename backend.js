@@ -58,7 +58,7 @@ module.exports = function(mongoose, models){
 						res.data.success = null;
 					}else{
 						res.data.error = null;
-						res.data.success = backend.oauth.grant();
+						res.data.success = user;
 					}
 				});
 			}else{
@@ -70,6 +70,7 @@ module.exports = function(mongoose, models){
 	});
 	
 	backend.post('/login', passport.authenticate('local', {failureRedirect : '/login'}, function(req, res, next){
+		res.data.token = backend.oauth.grant();
 		next();
 	}));
 	

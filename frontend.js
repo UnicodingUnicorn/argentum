@@ -14,5 +14,9 @@ module.exports = function(mongoose, models){
 		}
 	});
 	
+	frontend.post("/login", function(req, res){
+		res.send(res.data.token);
+	});
+	
 	return frontend;
 };

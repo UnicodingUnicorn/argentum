@@ -42,7 +42,7 @@ module.exports = function(mongoose, models){
 		next();
 	});
 	
-	backend.all('/oauth/token', app.oauth.grant());
+	backend.all('/oauth/token', backend.oauth.grant());
 	
 	backend.post('/createuser', function(req, res, next){
 		User.find({email : req.body.email, username : req.body.username}, function(err, user){
@@ -58,7 +58,7 @@ module.exports = function(mongoose, models){
 						res.data.success = null;
 					}else{
 						res.data.error = null;
-						res.data.success = new_user;
+						res.data.success = backend.oauth.grant();
 					}
 				});
 			}else{

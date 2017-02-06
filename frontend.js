@@ -15,7 +15,7 @@ module.exports = function(mongoose, models){
 	});
 	
 	frontend.post("/login", function(req, res){
-		res.send({"token" : res.data.token, "expires_in" : 60 * 60 * 24);
+		res.send({"token" : res.data.token, "expires_in" : 1); //send days
 	});
 	
 	return frontend;

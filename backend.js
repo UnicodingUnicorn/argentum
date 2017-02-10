@@ -5,9 +5,13 @@ module.exports = function(mongoose, models){
 	var express = require("express");
 	var bodyParser = require("body-parser");
 	var oauthserver = require("oauth2-server");
+	var jwt = require("jsonwebtoken");
+	
+	var secret= "pone";
 	
 	var passport = require("passport");
 	var localStrategy = require("passport-local"); 
+	
 	passport.use(new localStrategy(function(user, password, done){
 		User.findOne({username : user}, function(err, user){
 			if(err){

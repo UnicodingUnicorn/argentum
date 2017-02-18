@@ -8,13 +8,10 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/jquery.form.js"></script>
 		<script type="text/javascript" src="js/materialize.min.js"></script>
-		<script type="text/javascript" src="js/vue.js"></script>
-		<script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js"></script>
-		<script type="text/javascript" src="js/views/signup.js"></script>
 	</head>
 	<body>
 		<div  id="app" class="row">
-			<div v-show="message!=''" class="card-panel col s8 offset-s2">
+			<div v-if="message" class="card-panel col s8 offset-s2">
 				{{message}}
 			</div>
 			<form id="signup" class="col s8 offset-s2">
@@ -26,8 +23,8 @@
 				</div>
 				<div class="row">
 					<div class="input-field col s12">
-						<input id="unit" type="text" class="validate">
-						<label for="unit">Unit #</label>
+						<input id="unit" type="email" class="validate">
+						<label for="unit">Email</label>
 					</div>
 				</div>
 				<div class="row">
@@ -36,9 +33,12 @@
 						<label for="password">Password</label>
 					</div>
 				</div>
-				<button class="waves-effect waves-light btn" v-on:click="signup">Submit!</button>
+				<button class="waves-effect waves-light btn" v-on:click="signup" type="button">Submit!</button>
 				<!--input class="waves-effect waves-light btn" type="submit" value="Submit!"-->
 			</form>
 		</div>
 	</body>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js"></script>
+		<script type="text/javascript" src="js/views/signup.js"></script>
 </html>

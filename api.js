@@ -82,9 +82,14 @@ module.exports = function(mongoose, models){
 	api.post('/login', function(req, res, next){
 		User.findOne({username : req.body.username}, function(err, user){
 			if(err){
-				res.json({
+				res.status(500).json({
 					success : false,
 					message : err
+				});
+			}else if(!user){
+				res.status(400).json({
+					success : false,
+					message : "username does not exist"
 				});
 			}else if(user){
 				if(user.password == req.body.password){

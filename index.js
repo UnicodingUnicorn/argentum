@@ -5,7 +5,7 @@ var app = express();
 var models = require("./models");
 
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://admin:password@localhost:27017/argentum");
+mongoose.connect("mongodb://argentum:silver@localhost:27017/argentum");
 
 var api = require("./api")(mongoose, models);
 

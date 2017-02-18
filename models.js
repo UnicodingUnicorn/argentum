@@ -25,7 +25,7 @@ var Station = mongoose.model("Station", new Schema({
 	web_url : String,
 	irc : String,
 	twitter_url : String
-});
+}));
 
 module.exports = {
 	User : User,

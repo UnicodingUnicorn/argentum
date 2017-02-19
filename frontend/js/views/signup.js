@@ -10,20 +10,20 @@ var vm = new Vue({
 				password : $("#password").val(),
 				unit : $("#unit").val()
 			};
-			message = "stuff";
-				/*Vue.http.post("/api/createuser", formData, {emulateJSON : true}).then(
-					function(res){
-						return res.json();
-					},
-					function(res){
-						return res.json();
-					}
-				).then(function(json){
-					message = json;
-				});*/
-			}
+			//this.message = "stuff";
+			Vue.http.post("/api/createuser", formData, {emulateJSON : true}).then(
+				function(res){
+					return res.json();
+				},
+				function(res){
+					return res.json();
+				}
+			).then(function(json){
+				this.message = json;
+			});
 		}
-	});
+	}
+});
 	
 
 /*$(document).ready(function() { 

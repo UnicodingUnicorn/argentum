@@ -1,7 +1,8 @@
 var vm = new Vue({
 	el : "#app",
 	data : {
-		message : "test"
+		message : "test",
+		success : false
 	},
 	methods : {
 		signup : function(event){
@@ -10,31 +11,18 @@ var vm = new Vue({
 				password : $("#password").val(),
 				unit : $("#unit").val()
 			};
-			//this.message = "stuff";
-			Vue.http.post("/api/createuser", formData, {emulateJSON : true}).then(
+			this.$http.post("/api/createuser", formData, {emulateJSON : true}).then(
 				function(res){
-					return res.json();
+					this.message = res.body;
+					this.success = res.body.success;
+					if(res.body.success){
+							
+					}
 				},
 				function(res){
-					return res.json();
+					this.message = "Something went wrong!";
 				}
-			).then(function(json){
-				this.message = json;
-			});
+			);
 		}
 	}
 });
-	
-
-/*$(document).ready(function() { 
-	$("#signup").ajaxForm({
-		url : "/api/createuser",
-		dataType : "json",
-		success : function(response){
-			console.log(response);
-		},
-		error : function(response){
-			console.log(response);
-		}
-	});
-});*/

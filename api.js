@@ -47,7 +47,7 @@ module.exports = function(mongoose, models){
 			if(err){
 				res.json({
 					success : false,
-					message : err
+					message : "Internal database error"
 				});
 			}else if(user){
 				res.json({
@@ -64,7 +64,7 @@ module.exports = function(mongoose, models){
 					if(err){
 						res.json({
 							success : false,
-							message : err
+							message : "Internal database error saving"
 						})
 					}else{
 						var token = jwt.sign(user, secret, {expiresIn : 60 * 60 * 24});
@@ -84,7 +84,7 @@ module.exports = function(mongoose, models){
 			if(err){
 				res.status(500).json({
 					success : false,
-					message : err
+					message : "Internal database error"
 				});
 			}else if(!user){
 				res.status(400).json({

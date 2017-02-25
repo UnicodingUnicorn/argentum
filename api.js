@@ -2,12 +2,14 @@ module.exports = function(mongoose, models){
 	var User = models.User;
 	var Station = models.Station;
 
+	var config = require("./config");
+
 	var express = require("express");
 	var bodyParser = require("body-parser");
 	var jwt = require("jsonwebtoken");
 
-	var secret = "pone";
-	var expiry = 60 * 60 * 24;
+	var secret = config.secret;
+	var expiry = config.expiry;
 	var days = 60 * 60 * 24;
 
 	var api = express.Router();

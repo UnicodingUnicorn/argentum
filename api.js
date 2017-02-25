@@ -1,30 +1,32 @@
 module.exports = function(mongoose, models){
 	var User = models.User;
 	var Station = models.Station;
-	
+
 	var express = require("express");
 	var bodyParser = require("body-parser");
 	var jwt = require("jsonwebtoken");
-	
-	var secret= "pone";
-	
+
+	var secret = "pone";
+	var expiry = 60 * 60 * 24;
+	var days = 60 * 60 * 24;
+
 	var api = express.Router();
-	
+
 	api.use(bodyParser.json());
 	api.use(bodyParser.urlencoded({extended : true}));
-	
+
 	function jwtAuth(req, res, next){
 		var token = req.body.token || req.query.token || req.headers['x-access-token'];
 		if(token){
-			jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+			jwt.verify(token, app.get('superSecret'), function(err, decoded) {
 				if(err){
 					res.status(403).json({
 						success: false,
 						message: 'Failed to authenticate token.'
-					});    
+					});
 					return;
 				}else{
-					req.decoded = decoded;    
+					req.decoded = decoded;
 					next();
 				}
 			});
@@ -36,12 +38,12 @@ module.exports = function(mongoose, models){
 			return;
 		}
 	}
-	
+
 	api.use(function(req, res, next){
 		res.data = {};
 		next();
 	});
-	
+
 	api.post('/createuser', function(req, res, next){
 		User.find({email : req.body.email, username : req.body.username}, function(err, user){
 			if(err){
@@ -67,18 +69,18 @@ module.exports = function(mongoose, models){
 							message : "Internal database error saving"
 						})
 					}else{
-						var token = jwt.sign(user, secret, {expiresIn : 60 * 60 * 24});
+						var token = jwt.sign(user, secret, {expiresIn : expiry});
 						res.json({
 							success : true,
 							message : "success",
-							token : token
+							token : {token : token, expires : expiry / days}
 						});
 					}
 				});
 			}
 		});
 	});
-	
+
 	api.post('/login', function(req, res, next){
 		User.findOne({username : req.body.username}, function(err, user){
 			if(err){
@@ -93,11 +95,11 @@ module.exports = function(mongoose, models){
 				});
 			}else if(user){
 				if(user.password == req.body.password){
-					var token = jwt.sign(user, secret, {expiresIn : 60 * 60 * 24});
+					var token = jwt.sign(user, secret, {expiresIn : expiry});
 					res.json({
 						success : true,
 						message : "success",
-						token : token
+						token : {token : token, expires : expiry / days}
 					});
 				}else{
 					res.json({
@@ -108,6 +110,6 @@ module.exports = function(mongoose, models){
 			}
 		});
 	});
-	
+
 	return api;
 };

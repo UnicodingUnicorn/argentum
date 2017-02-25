@@ -16,7 +16,10 @@ var vm = new Vue({
 					this.message = res.body;
 					this.success = res.body.success;
 					if(res.body.success){
-							
+						Cookies.set("token", req.body.token.token, {expires : req.body.token.expires});
+						window.location.href = "index.html";
+					}else{
+						this.message = res.body.message;
 					}
 				},
 				function(res){

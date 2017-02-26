@@ -45,7 +45,7 @@ module.exports = function(mongoose, models){
 	});
 
 	api.post('/createuser', function(req, res, next){
-		User.find({email : req.body.email, username : req.body.username}, function(err, user){
+		User.findOne({email : req.body.email, username : req.body.username}, function(err, user){
 			if(err){
 				res.json({
 					success : false,
@@ -69,7 +69,7 @@ module.exports = function(mongoose, models){
 							message : "Internal database error saving"
 						})
 					}else{
-						var token = jwt.sign(user, secret, {expiresIn : expiry});
+						var token = jwt.sign(new_user, secret, {expiresIn : expiry});
 						res.json({
 							success : true,
 							message : "success",

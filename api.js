@@ -113,5 +113,9 @@ module.exports = function(mongoose, models){
 		});
 	});
 
+	api.post("/addstation", function(req, res){
+		
+	});
+
 	return api;
 };

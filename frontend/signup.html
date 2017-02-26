@@ -10,13 +10,7 @@
 	</head>
 	<body>
 		<div id="app" class="row">
-			<div v-if="loggedin">
-				<div class="card-panel col s8 offset-s2">
-					<span class="card-content">You've already logged in!</span>
-				</div>
-			</div>
-			<div v-else>
-				<div v-if="success==false" class="red card-panel col s8 offset-s2">
+			<div v-if="success==false" class="red card-panel col s8 offset-s2">
 					<span class="card-content white-text">{{message}}</span>
 				</div>
 				<form id="signup" class="col s8 offset-s2" v-on:submit.prevent="signup">
@@ -40,7 +34,7 @@
 					</div>
 					<input class="waves-effect waves-light btn" type="submit" value="Submit!">
 				</form>
-			</div>
+			
 		</div>
 	</body>
 	<script type="text/javascript" src="js/vue.js"></script>

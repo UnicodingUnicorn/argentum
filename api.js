@@ -75,7 +75,7 @@ module.exports = function(mongoose, models){
 						res.json({
 							success : true,
 							message : "success",
-							token : {token : token, expires : expiry / days}
+							token : {token : token, expires : expiry}
 						});
 					}
 				});
@@ -114,7 +114,7 @@ module.exports = function(mongoose, models){
 	});
 
 	api.post("/addstation", function(req, res){
-		
+
 	});
 
 	return api;

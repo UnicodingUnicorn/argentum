@@ -1,8 +1,8 @@
 var vm = new Vue({
 	el : "#app",
 	data : {
-		message : "test",
-		success : false
+		message : "",
+		success : undefined
 	},
 	methods : {
 		signup : function(event){
@@ -16,9 +16,10 @@ var vm = new Vue({
 					this.message = res.body;
 					this.success = res.body.success;
 					if(res.body.success){
-						Cookies.set("token", req.body.token.token, {expires : req.body.token.expires});
+						//Cookies.set("token", req.body.token.token, {expires : req.body.token.expires});
+						document.cookie = "token=" + req.body.token.token + ";max-age=" + req.body.token.expires;
 						window.location.href = "index.html";
-						this.message = Cookies.get("token");
+						//this.message = Cookies.get("token");
 					}else{
 						this.message = res.body.success;
 					}

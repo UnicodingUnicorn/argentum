@@ -10,31 +10,38 @@
 	</head>
 	<body>
 		<div id="app" class="row">
-			<div v-if="success==false" class="red card-panel col s8 offset-s2">
-				<span class="card-content white-text">{{message}}</span>
+			<div v-if="loggedin">
+				<div class="card-panel col s8 offset-s2">
+					<span class="card-content">You've already logged in!</span>
+				</div>
 			</div>
-			<form id="signup" class="col s8 offset-s2">
-				<div class="row">
-					<div class="input-field col s12">
-						<input id="username" type="text" class="validate">
-						<label for="username">Username</label>
-					</div>
+			<div v-else>
+				<div v-if="success==false" class="red card-panel col s8 offset-s2">
+					<span class="card-content white-text">{{message}}</span>
 				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input id="unit" type="email" class="validate">
-						<label for="unit">Email</label>
+				<form id="signup" class="col s8 offset-s2">
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="username" type="text" class="validate">
+							<label for="username">Username</label>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input id="password" type="password" class="validate">
-						<label for="password">Password</label>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="unit" type="email" class="validate">
+							<label for="unit">Email</label>
+						</div>
 					</div>
-				</div>
-				<button class="waves-effect waves-light btn" v-on:click="signup" type="button">Submit!</button>
-				<!--input class="waves-effect waves-light btn" type="submit" value="Submit!"-->
-			</form>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="password" type="password" class="validate">
+							<label for="password">Password</label>
+						</div>
+					</div>
+					<button class="waves-effect waves-light btn" v-on:click="signup" type="button">Submit!</button>
+					<!--input class="waves-effect waves-light btn" type="submit" value="Submit!"-->
+				</form>
+			</div>
 		</div>
 	</body>
 	<script type="text/javascript" src="js/vue.js"></script>

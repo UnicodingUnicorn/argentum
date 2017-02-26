@@ -75,7 +75,7 @@ module.exports = function(mongoose, models){
 						res.json({
 							success : true,
 							message : "success",
-							token : {token : token, expires : expiry}
+							token : {token : token, expires : expiry / days}
 						});
 					}
 				});

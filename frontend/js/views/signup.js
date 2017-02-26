@@ -32,4 +32,4 @@ var vm = new Vue({
 		}
 	}
 });
-vm.loggedin = Cookies.get("token") != undefined;
+//vm.loggedin = Cookies.get("token") != undefined;

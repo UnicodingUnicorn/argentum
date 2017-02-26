@@ -3,7 +3,7 @@ var vm = new Vue({
 	data : {
 		message : "",
 		success : undefined,
-		loggedin : Cookies.get("token")
+		loggedin : Cookies.get("token") != undefined
 	},
 	methods : {
 		signup : function(event){

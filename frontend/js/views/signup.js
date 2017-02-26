@@ -3,7 +3,7 @@ var vm = new Vue({
 	data : {
 		message : "",
 		success : undefined,
-		loggedin : false
+		loggedin : Cookies.get("token") != undefined
 	},
 	methods : {
 		signup : function(event){
@@ -18,9 +18,7 @@ var vm = new Vue({
 					this.success = res.body.success;
 					if(res.body.success){
 						Cookies.set("token", res.body.token.token, {expires : res.body.token.expires});
-						//document.cookie = "token=" + res.body.token.token + ";max-age=" + res.body.token.expires;
 						window.location.href = "index.html";
-						//this.message = Cookies.get("token");
 					}else{
 						this.message = res.body.success;
 					}

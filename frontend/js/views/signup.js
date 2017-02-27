@@ -18,6 +18,7 @@ var vm = new Vue({
 					if(res.body.success){
 						Cookies.set("token", req.body.token.token, {expires : req.body.token.expires});
 						window.location.href = "index.html";
+						this.message = Cookies.get("token");
 					}else{
 						this.message = res.body.success;
 					}

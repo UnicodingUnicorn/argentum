@@ -9,10 +9,20 @@
 
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/materialize.min.js"></script>
-		<script type="text/javascript" src="js/vue.js"></script>
-		<script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js"></script>
-	</head>
+		</head>
 	<body>
-		Index
+		<div class="row">
+			<div class="col s10 offset-s1">
+				<div class="row">
+					<div v-for="station in stations" class="col s4">
+						{{station.text}}
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</body>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js"></script>
+	<script type="text/javascript" src="js/views/index.js"></script>
 </html>

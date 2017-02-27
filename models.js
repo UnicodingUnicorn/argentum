@@ -13,6 +13,7 @@ var Station = mongoose.model("Station", new Schema({
 	name : String,
 	is_active : Boolean,
 	submitter : { type: Schema.Types.ObjectId, ref: 'User'},
+	streams : [{ type: Schema.Types.ObjectId, ref: 'Stream'}],
 	//category : ref to category,
 	affiliation : String,
 	//weight : int, no idea what this does yet
@@ -28,7 +29,13 @@ var Station = mongoose.model("Station", new Schema({
 	twitter_url : String
 }));
 
+var Stream = mongoose.model("Stream", new Schema({
+	name : String,
+	url : String
+}));
+
 module.exports = {
 	User : User,
-	Station : Station
+	Station : Station,
+	Stream : Stream
 };

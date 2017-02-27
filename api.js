@@ -1,6 +1,7 @@
 module.exports = function(mongoose, models){
 	var User = models.User;
 	var Station = models.Station;
+	var Stream = models.Stream;
 
 	var config = require("./config");
 
@@ -126,26 +127,48 @@ module.exports = function(mongoose, models){
 					message : "Station with name aleady exists"
 				});
 			}
-			var new_user = new User({
-				username : req.body.username,
-				email : req.body.email,
-				password : req.body.password
-			});
-			new_station.save(function(err){
-				if(err){
+			User.findOne({email : req.decoded.email}, function(err, user){
+				if(err || !user){
 					res.json({
 						success : false,
-						message : "Internal database error saving"
-					})
-				}else{
-					var token = jwt.sign(new_user, secret, {expiresIn : expiry});
-					res.json({
-						success : true,
-						message : "success",
-						token : {token : token, expires : expiry / days}
+						message : "Internal database error"
 					});
 				}
+				var stream = new Stream({
+					name : req.body.name + " Stream",
+					url : req.body.stream
+				});
+				stream.save(function(err){
+					if(err){
+						res.json({
+							success : false,
+							message : "Internal database error saving"
+						});
+					}else{
+						var new_station = new Station({
+							submitter : user._id,
+							name : req.body.name,
+							genre : req.body.genre,
+							description : req.body.description,
+							stream : stream._id
+						});
+						new_station.save(function(err){
+							if(err){
+								res.json({
+									success : false,
+									message : "Internal database error saving"
+								});
+							}else{
+								res.json({
+									success : true,
+									message : "success",
+								});
+							}
+						});
+					}
+				});
 			});
+		
 		});
 	});
 

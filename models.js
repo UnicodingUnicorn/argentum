@@ -12,6 +12,7 @@ var User = mongoose.model("User", new Schema({
 var Station = mongoose.model("Station", new Schema({
 	name : String,
 	is_active : Boolean,
+	submitter : { type: Schema.Types.ObjectId, ref: 'User'},
 	//category : ref to category,
 	affiliation : String,
 	//weight : int, no idea what this does yet

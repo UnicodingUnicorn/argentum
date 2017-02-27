@@ -8,9 +8,11 @@ var vm = new Vue({
 	methods : {
 		signup : function(event){
 			var formData = {
-				username : $("#username").val(),
-				password : $("#password").val(),
-				unit : $("#unit").val()
+				token : Cookies.get("token"),
+				name : $("#name").val(),
+				genre : $("#genre").val(),
+				description : $("#description").val(),
+				stream : $("#stream").val()
 			};
 			this.$http.post("/api/createuser", formData, {emulateJSON : true}).then(
 				function(res){

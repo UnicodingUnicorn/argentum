@@ -113,8 +113,40 @@ module.exports = function(mongoose, models){
 		});
 	});
 
-	api.post("/addstation", function(req, res){
-
+	api.post("/addstation", jwtAuth, function(req, res){
+		Station.findOne({name : req.body.name}, function(err, station){
+			if(err){
+				res.json({
+					success : false,
+					message : "Internal database error"
+				});
+			}else if(station){
+				res.json({
+					success : false,
+					message : "Station with name aleady exists"
+				});
+			}
+			var new_user = new User({
+				username : req.body.username,
+				email : req.body.email,
+				password : req.body.password
+			});
+			new_station.save(function(err){
+				if(err){
+					res.json({
+						success : false,
+						message : "Internal database error saving"
+					})
+				}else{
+					var token = jwt.sign(new_user, secret, {expiresIn : expiry});
+					res.json({
+						success : true,
+						message : "success",
+						token : {token : token, expires : expiry / days}
+					});
+				}
+			});
+		});
 	});
 
 	return api;

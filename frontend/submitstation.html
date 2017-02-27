@@ -10,28 +10,48 @@
 	</head>
 	<body>
 		<div id="app" class="row">
-			<div v-if="message" class="card-panel col s8 offset-s2">
-				{{message}}
+			<div v-if="!loggedin">
+					<div class="card-panel col s8 offset-s2">
+						<span class="card-content">You need to sign in!</span>
+					</div>
+				</div>
+			<div v-else>
+				<div v-if="message" class="card-panel col s8 offset-s2">
+					{{message}}
+				</div>
+				<form id="submitstation" class="col s8 offset-s2" v-on:submit.prevent="signup">
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="name" type="text" class="validate">
+							<label for="name">Station Name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="genre" type="text" class="validate">
+							<label for="genre">Station Genre</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea id="description" class="materialize-textarea"></textarea>
+							<label for="description">Station Description</label>
+						</div>
+					</div>
+					<!--More info to be put here-->
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="streamurl" type="text" class="validate">
+							<label for="streamurl">Stream URL</label>
+						</div>
+					</div>
+					<input class="waves-effect waves-light btn" type="submit" value="Submit!">
+				</form>
 			</div>
-			<form id="signup" class="col s8 offset-s2">
-				<div class="row">
-					<div class="input-field col s12">
-						<input id="name" type="text" class="validate">
-						<label for="name">Station Name</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input id="genre" type="text" class="validate">
-						<label for="genre">Station Genre</label>
-					</div>
-				</div>
-				<button class="waves-effect waves-light btn" v-on:click="signup" type="button">Login</button>
-				<!--input class="waves-effect waves-light btn" type="submit" value="Submit!"-->
-			</form>
 		</div>
 	</body>
 	<script type="text/javascript" src="js/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js"></script>
-	<script type="text/javascript" src="js/views/login.js"></script>
+	<script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js"></script>
+	<script type="text/javascript" src="js/views/submitstation.js"></script>
 </html>

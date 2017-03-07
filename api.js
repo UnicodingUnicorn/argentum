@@ -168,7 +168,22 @@ module.exports = function(mongoose, models){
 					}
 				});
 			});
-		
+
+		});
+	});
+	api.get("/stations", function(req, res){
+		Station.find({}).populate().exec(function(err, stations){
+			if(err){
+				res.json({
+					success : false,
+					message : "Internal database error"
+				});
+			}
+			res.json({
+				success : true,
+				message : "success!",
+				stations : stations
+			})
 		});
 	});
 

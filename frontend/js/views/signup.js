@@ -20,7 +20,7 @@ var vm = new Vue({
 						Cookies.set("token", res.body.token.token, {expires : res.body.token.expires});
 						window.location.href = "index.html";
 					}else{
-						this.message = res.body.success;
+						this.message = res.body.message;
 					}
 				},
 				function(res){

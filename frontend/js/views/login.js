@@ -6,7 +6,7 @@ var vm = new Vue({
 		loggedin : Cookies.get("token") != undefined
 	},
 	methods : {
-		signup : function(event){
+		login : function(event){
 			var formData = {
 				username : $("#username").val(),
 				password : $("#password").val()

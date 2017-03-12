@@ -13,7 +13,7 @@
 			<div v-if="message" class="card-panel col s8 offset-s2">
 				{{message}}
 			</div>
-			<form id="signup" class="col s8 offset-s2">
+			<form id="login" class="col s8 offset-s2" v-on:submit.prevent="login">
 				<div class="row">
 					<div class="input-field col s12">
 						<input id="username" type="text" class="validate">

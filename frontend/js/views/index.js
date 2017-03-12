@@ -12,7 +12,7 @@ $document.ready(function(){
 		if(res.body.success){
 			vm.data = res.body.stations;
 		}else{
-
+			
 		}
 	});
 });

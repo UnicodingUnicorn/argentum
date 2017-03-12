@@ -8,13 +8,10 @@ var vm = new Vue({
 	methods : {
 		signup : function(event){
 			var formData = {
-				token : Cookies.get("token"),
-				name : $("#name").val(),
-				genre : $("#genre").val(),
-				description : $("#description").val(),
-				stream : $("#stream").val()
+				username : $("#username").val(),
+				password : $("#password").val()
 			};
-			this.$http.post("/api/createuser", formData, {emulateJSON : true}).then(
+			this.$http.post("/api/login", formData, {emulateJSON : true}).then(
 				function(res){
 					this.message = res.body;
 					this.success = res.body.success;

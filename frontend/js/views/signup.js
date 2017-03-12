@@ -10,7 +10,7 @@ var vm = new Vue({
 			var formData = {
 				username : $("#username").val(),
 				password : $("#password").val(),
-				unit : $("#unit").val()
+				email : $("#email").val()
 			};
 			this.$http.post("/api/createuser", formData, {emulateJSON : true}).then(
 				function(res){

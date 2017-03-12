@@ -47,6 +47,18 @@ module.exports = function(mongoose, models){
 		next();
 	});
 
+	/**
+	 * @api {post} /createuser
+	 * @apiName CreateUser
+	 * @apiGroup Accounts
+	 *
+	 * @apiParam {String} username User's unique proposed username
+	 * @apiParam {String} email User's email
+	 * @apiParam {String} password User's password
+	 *
+	 *
+	 */
+
 	api.post('/createuser', function(req, res, next){
 		User.findOne({email : req.body.email, username : req.body.username}, function(err, user){
 			if(err){
@@ -87,12 +99,12 @@ module.exports = function(mongoose, models){
 	api.post('/login', function(req, res, next){
 		User.findOne({username : req.body.username}, function(err, user){
 			if(err){
-				res.status(500).json({
+				res.json({
 					success : false,
 					message : "Internal database error"
 				});
 			}else if(!user){
-				res.status(400).json({
+				res.json({
 					success : false,
 					message : "username does not exist"
 				});

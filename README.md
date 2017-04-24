@@ -1,4 +1,4 @@
-#Intro
+# Intro
 
 A nodejs/CEVN stack rebuild-ish of the excellent (albeit commentless) [Ponyville Live](https://github.com/Poniverse/Ponyville-Live) webapp by SilverEagle. Please don't ask about the name. It's also pretty much still in development and probably cannot even hope to live up to even a shadow of the glory of its forebear. Sorry.
 
@@ -15,7 +15,7 @@ The rest of the repo is the backend. `index.js` does not hold much of interest, 
 * `secret`: Secret for JWTs
 * `expiry`: Expiry time for JWTs
 
-#Running
+# Running
 
 Pending a proper vagrant or docker file, I apologise for making you do everything manually. All commands are run from the repository root.
 

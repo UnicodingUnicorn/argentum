@@ -1,7 +1,5 @@
 import Vue from 'vue';
-import Resource from 'vue-resource'
 import Router from 'vue-router';
-import Cookie from 'vue-cookie';
 
 import Hello from '@/components/Hello';
 import Login from '@/components/Login';
@@ -10,8 +8,6 @@ import Home from '@/components/Home';
 import AddStation from '@/components/AddStation'
 
 Vue.use(Router);
-Vue.use(Resource);
-Vue.use(Cookie);
 
 export default new Router({
   routes: [

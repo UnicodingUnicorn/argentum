@@ -3,7 +3,7 @@
     <div class="col m10 offset-m1">
       <div class="row">
         <div v-for="station in stations" class="col s4">
-          <station :station="station"></station>
+          <station :playingStation="playingStation" :station="station"  v-on:playing="switchPlayer"></station>
         </div>
       </div>
     </div>
@@ -17,7 +17,13 @@
       return {
         user : null,
         token : this.$cookie.get("token"),
-        stations : []
+        stations : [],
+        playingStation : ""
+      }
+    },
+    methods : {
+      switchPlayer : function(event){
+        this.playingStation = event;
       }
     },
     beforeMount : function() {

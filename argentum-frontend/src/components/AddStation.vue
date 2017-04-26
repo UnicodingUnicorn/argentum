@@ -37,10 +37,10 @@
     name : 'addstation',
     data(){
       return {
-        token : this.$cookie.get("token"),
+        token : this.$cookie.get('token'),
         message : "",
         station_data : {
-          token : this.$cookie.get("token"),
+          token : this.$cookie.get('token'),
           name : "",
           stream : ""
         }

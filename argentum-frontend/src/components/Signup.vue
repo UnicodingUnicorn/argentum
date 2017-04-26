@@ -49,6 +49,7 @@
         this.$http.post("/api/adduser", this.signup_data, {emulateJSON : true}).then(
           res => {
             this.$cookie.set('token', res.body.token.token, res.body.token.expiry);
+            this.$store.commit('setToken', this.$cookie.get('token'));
             this.$router.push('/');
           },
           res => {

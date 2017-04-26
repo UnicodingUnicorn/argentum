@@ -42,6 +42,7 @@
         this.$http.post("/api/login", this.login_data).then(
           res => {
             this.$cookie.set('token', res.body.token.token, res.body.token.expiry);
+            this.$store.commit('setToken', this.$cookie.get('token'));
             this.$router.push('/');
           }, res => {
             this.message = res.body.message

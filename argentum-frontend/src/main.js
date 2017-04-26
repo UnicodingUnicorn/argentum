@@ -18,10 +18,23 @@ Vue.use(Vuex);
 
 Vue.component("station", Station);
 
+const store = new Vuex.Store({
+  state : {
+    token : Vue.cookie.get("token")
+  },
+  mutations : {
+    setToken : (state, token) => state.token = token
+  },
+  getters : {
+    token : (state) => state.token
+  }
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

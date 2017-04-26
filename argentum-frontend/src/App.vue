@@ -18,15 +18,19 @@
 <script>
 export default {
   name: 'app',
-  data : function() {
-    return {
-      token : this.$cookie.get("token")
+  computed : {
+    token : function(){
+      return this.$store.state.token;
     }
   },
   methods : {
     logout : function(event){
       this.$cookie.delete("token");
+      this.$store.commit('setToken', "");
     }
+  },
+  created : function(){
+    this.$store.commit('setToken', this.$cookie.get('token'));
   }
 }
 </script>

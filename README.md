@@ -19,7 +19,7 @@ The rest of the repo is the backend. `index.js` does not hold much of interest, 
 
 Pending a proper vagrant or docker file, I apologise for making you do everything manually. All commands are run from the repository root.
 
-Build the frontend:
+## Build the frontend:
 
 ```
 cd argentum-frontend
@@ -27,13 +27,15 @@ npm install
 npm run build
 ```
 
-Install the dependencies:
+The frontend is now available to be servered at /argentum-frontend/dist.
+
+## Install the dependencies:
 
 ```
 npm install
 ```
 
-Setup CouchDB:
+## Setup CouchDB:
 
 ```
 //Coming soon with a script!

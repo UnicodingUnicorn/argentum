@@ -7,7 +7,8 @@ var api = require("./api")(nano);
 
 var app = express();
 app.use("/api", api);
-app.use(express.static(__dirname + "/argentum-frontend/dist"));
+
+if(config.serveFrontend) app.use(express.static(__dirname + "/argentum-frontend/dist"));
 
 app.listen(config.port, function(err){
   err ? console.log(err) : console.log("Listening at " + config.port);

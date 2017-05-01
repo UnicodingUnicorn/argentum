@@ -8,12 +8,13 @@ The backend is intended to be completely standalone and interacts with the front
 
 The frontend is completely located in the (aptly named) argentum-frontend folder. Within it is all the strange files webpack uses. The Vue components making up the app are located within the /src folder, and the built pages from webpack are located in the /dist folder. Do note that in order to properly view the pages, it has to be served by something pointed at /dist or whichever directory you so desire transferred to. Simply opening from the file manager will not work.
 
-The rest of the repo is the backend. `index.js` does not hold much of interest, being the thing tying everything together. `api.js` holds all the api calls made to the backend, calls which would be documented at a later date, while `config.js` holds several adjustable values that may need to be adjusted, namely:
+The rest of the repo is the backend. `index.js` does not hold much of interest, being the thing tying everything together. `api.js` holds all the api calls made to the backend, calls documented in api.md with apidocs, while `config.js` holds several adjustable values that may need to be adjusted, namely:
 
 * `port`: Port at which the express app runs
 * `dburl`: URL at which the database is located (`IP:port`)
 * `secret`: Secret for JWTs
 * `expiry`: Expiry time for JWTs
+* `serveFrontend`: Boolean, whether to serve the frontend located in 'argentum-frontend' or not
 
 # Running
 

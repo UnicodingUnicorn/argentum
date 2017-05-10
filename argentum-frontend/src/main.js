@@ -7,14 +7,16 @@ import router from './router'
 import Resource from 'vue-resource'
 import Cookie from 'vue-cookie';
 import Vuex from 'vuex';
+import Socketio from 'vue-socket.io';
 
-import Station from "./components/Station"
+import Station from "./components/Station";
 
 Vue.config.productionTip = false
 
 Vue.use(Resource);
 Vue.use(Cookie);
 Vue.use(Vuex);
+Vue.use(Socketio, ':10202/');
 
 Vue.component("station", Station);
 

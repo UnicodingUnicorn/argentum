@@ -38,3 +38,6 @@ jspm_packages
 
 # Generated apidoc
 doc
+
+# Script for testing stuff
+test.js

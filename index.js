@@ -3,10 +3,13 @@ var nano = require("nano")(config.dburl);
 
 var express = require("express");
 var path = require("path");
-var api = require("./api")(nano);
 
 var app = express();
+
+var api = require("./api")(nano);
+var metadata_updater = require("./metadata-updater")(nano);
 app.use("/api", api);
+//app.use("/metadata", metadata_updater);
 
 if(config.serveFrontend) app.use(express.static(__dirname + "/argentum-frontend/dist"));
 

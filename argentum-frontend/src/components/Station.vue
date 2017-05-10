@@ -1,17 +1,39 @@
 <template>
-  <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{station._id}}</span>
-      <p>
-        <span>
-          <i class="material-icons clickable" v-show="!(playingStation == station._id)" v-on:click="play">play_arrow</i>
-          <i class="material-icons clickable" v-show="playingStation == station._id" v-on:click="pause">pause</i>
-        </span>
-        <div v-show="song_data"> {{song_data.title}}</div>
+  <ul class="collection">
+    <li class="collection-item avatar">
+      <img src="http://placehold.it/250x250" alt="" class="circle">
+      <span class="title">{{station._id}}<span class="badge">{{song_data.listeners}}</span></span>
+      <p>{{song_data.title}} <br>
+         {{song_data.artist}}
       </p>
+      <a class="secondary-content">
+        <i class="material-icons clickable" v-show="!(playingStation == station._id)" v-on:click="play">play_arrow</i>
+        <i class="material-icons clickable" v-show="playingStation == station._id" v-on:click="pause">pause</i>
+      </a>
+    </li>
+    <audio v-bind:src="station.stream" ref="audio" style="position:absolute"></audio>
+  </ul>
+  <!--div class="card horizontal">
+    <div class="card-image">
+      <img src="http://placehold.it/250x250">
     </div>
-    <audio v-bind:src="station.stream" ref="audio"></audio>
-  </div>
+    <div class="card-stacked">
+      <span class="card-title">
+        {{station._id}}
+        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+      </span>
+      <div class="card-content">
+        <p>
+          <span>
+            <i class="material-icons clickable" v-show="!(playingStation == station._id)" v-on:click="play">play_arrow</i>
+            <i class="material-icons clickable" v-show="playingStation == station._id" v-on:click="pause">pause</i>
+          </span>
+          <div v-show="song_data"> {{song_data.title}}</div>
+        </p>
+      </div>
+      <audio v-bind:src="station.stream" ref="audio" style="position:absolute"></audio>
+    </div>
+  </div-->
 </template>
 <style>
   .clickable {

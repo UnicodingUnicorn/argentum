@@ -16,6 +16,24 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
+          <input id="genre" type="text" class="validate" v-model="station_data.genre">
+          <label for="genre">Station Genre</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="description" type="text" class="materialize-textarea" v-model="station_data.description"></textarea>
+          <label for="description">Station Description</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="website" type="text" class="validate" v-model="station_data.website">
+          <label for="website">Station Website</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
           <input id="stream" type="text" class="validate" v-model="station_data.stream">
           <label for="stream">Stream URL</label>
         </div>
@@ -42,6 +60,9 @@
         station_data : {
           token : this.$cookie.get('token'),
           name : "",
+          genre : "",
+          description : "",
+          website : "",
           stream : ""
         }
       }

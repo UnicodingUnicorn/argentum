@@ -228,7 +228,7 @@ module.exports = function(nano){
 
   /**
    * @api {get} /stations/:station Get a specific station by ID
-   * @apiName GetStationID 
+   * @apiName GetStationID
    * @apiGroup Station
    *
    * @apiParam station ID of the station
@@ -352,6 +352,18 @@ module.exports = function(nano){
         if(req.body.name == ''){
           res.status(400).json({
             message : "Please enter a name!"
+          });
+        }else if(req.body.genre == ''){
+          res.status(400).json({
+            message : "Please enter a genre!"
+          });
+        }else if(req.body.description == ''){
+          res.status(400).json({
+            message : "Please enter a description!"
+          });
+        }else if(req.body.website == ''){
+          res.status(400).json({
+            message : "Please enter a website!"
           });
         }else if(req.body.stream == ''){
           res.status(400).json({
